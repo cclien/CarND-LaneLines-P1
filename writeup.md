@@ -7,6 +7,7 @@
 
 This report shows how I use methods learned from the lesson "Computer Vision Fundanmentals" in the SDC class to finding lane lines in given images and video clips.
 
+[![Sample output YouTube Video](http://img.youtube.com/vi/4YzheUjWGNE/0.jpg)](http://www.youtube.com/watch?v=4YzheUjWGNE "Sample output YouTube Video")
 
 ---
 
