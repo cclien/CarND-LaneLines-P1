@@ -29,15 +29,13 @@ The boundry in cropped area will become the longest line after Hough Line Transf
 ![image](images/canny_before_roi.png)
 
 #### Implementation of lane line finding (choosing) function
-Since we will have many lines (blue lines in shown image below) after Hough Line Transformation. We assume the longest line be the lane line (shown as red ones).
+Since we will have many line segments after Hough Line Transformation. We try to averaging them to figure out the final lane line.
 
-![image](images/houghlines.png)
+![image](images/average.png)
 
-As the image shown above, we got 13 lines after the Hough Line Transformation. Tried to list them in slope and length. After testing with various inputs, I filtered out lines with slope < 0.5, which will be something line from a bridge.
-![image](images/lines_debug.png)
+As the image shown above, we got serveal lines after the Hough Line Transformation (the blue ones). We calculate final lane line by averaging the lines we with their coordinates. After testing with various inputs, I discard lines with slope < 0.5 when calculating the average, which will be something line from a bridge.
 
-As lines shown above, we'll pick two lines: one in postive slope and one in negative slope as our left and right lane line.
-![image](images/lines_debug_2.png)
+As red lines shown above, we calculate left and right lane separately. One in postive slope and one in negative slope as our left and right lane line.
 
 #### Extrapolate the lane lines
 ![image](images/short_line.png)
@@ -51,6 +49,8 @@ In some case the line is shorten due to it's a broken center line. I tried to ex
 ```
 
 Applying y=(height of the image) and y=(height of the image)/2 to the equation and we can have new x values for the extrapolated line.
+
+![image](images/extended_line.png)
 
 ### 2. Identify potential shortcomings with your current pipeline
 
