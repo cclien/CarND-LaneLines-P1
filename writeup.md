@@ -16,8 +16,41 @@ This report shows how I use methods learned from the lesson "Computer Vision Fun
 
 The base example project comes with serveral useful helper function suchs as grayscale, blur, canny for preprocessing the image. It seems all we need to do is building a pipeline with these building blocks. Which are shown below:
 
-![image](images/steps_1.jpg)
-![image](images/steps_2.jpg)
+##### Step 1. Load image
+![image](images/s1.png)
+
+First, we read input image as numpy ndarray. We can get the image from still image file or from a single frame of a video clip with moviepy library.
+
+##### Step 2. Convert image to Grayscale
+![image](images/s2.png)
+
+Since we are going to apply Canny Edge Detector later, we need to convert the image to grayscale first.
+
+##### Step 3. Noise reduction with Gaussian smoothing 
+![image](images/s3.png)
+
+Edge detection is very sensiable with noise in the image, to mitigate bad effect from noise, we apply Gaussian blur filter before the edge detection.
+
+##### Step 4. Applying Canny Edge Detector
+![image](images/s4.png)
+
+Applying Canny Edge Detector function in OpenCV, we can get the edges of given image.
+
+##### Step 5. Choosing region of interest
+![image](images/s5.png)
+
+Since the lane lines only appears in certain area of given image, we filtered out unwanted part of the image and only leave the part which have road surfaces on it.
+
+##### Step 6. Hough Line Transformation and lane finding
+![image](images/s6.png)
+
+Applying Hough Line Transformation on the image above. It helps us to determine serveral lines in the image, which are given as a (x1,y1)-(x2,y2) form. It may come with serveral line segments, so we need to do something to find the final lane line. More detail about lane finding are described below.
+
+##### Step 7. Overlay lane line on original image
+![image](images/s7.png)
+
+Finally, we overlaid the lane lines we found in the image on original image, which gives us better visualization about the lanes our code have found.
+
 
 #### Finding: What did I got for cropping region of interest before applying Canny Edge Detection
 
